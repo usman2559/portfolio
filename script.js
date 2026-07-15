@@ -47,8 +47,8 @@
     window.addEventListener("mousemove", e => {
       x = e.clientX; y = e.clientY;
       dot.style.transform = `translate(${x}px, ${y}px) translate(-50%,-50%)`;
-      glow.style.left = x + "px"; glow.style.top = y + "px";
-    });
+      glow.style.transform = `translate(${x - 210}px, ${y - 210}px)`;
+    }, { passive: true });
     (function loop() {
       rx += (x - rx) * 0.18; ry += (y - ry) * 0.18;
       ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
@@ -65,14 +65,22 @@
      --------------------------------------------------------------- */
   function initNetworkCanvas() {
     const canvas = $("#bg-canvas");
-    const ctx = canvas.getContext("2d");
-    let w, h, nodes = [];
+    const ctx = canvas.getContext("2d", { alpha: true });
+    let w, h, nodes = [], dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isSmall = window.innerWidth < 768;
+    let paused = false, lastFrame = 0;
+    const FRAME_INTERVAL = 1000 / 30; // cap to ~30fps — plenty smooth, half the main-thread cost of 60fps
 
     function resize() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-      const count = Math.min(70, Math.floor((w * h) / 22000));
+      w = window.innerWidth; h = window.innerHeight;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      canvas.style.width = w + "px"; canvas.style.height = h + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      // Fewer nodes on mobile — this is where most scroll jank was coming from
+      const divisor = isSmall ? 42000 : 22000;
+      const cap = isSmall ? 28 : 60;
+      const count = Math.min(cap, Math.floor((w * h) / divisor));
       nodes = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
@@ -80,23 +88,35 @@
         vy: (Math.random() - 0.5) * 0.25,
       }));
     }
-    window.addEventListener("resize", resize);
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(resize, 200);
+    });
     resize();
 
-    function draw() {
+    document.addEventListener("visibilitychange", () => { paused = document.hidden; });
+
+    function draw(ts) {
+      if (!reduceMotion) requestAnimationFrame(draw);
+      if (paused || reduceMotion) return;
+      if (ts - lastFrame < FRAME_INTERVAL) return;
+      lastFrame = ts;
+
       ctx.clearRect(0, 0, w, h);
       for (const n of nodes) {
         n.x += n.vx; n.y += n.vy;
         if (n.x < 0 || n.x > w) n.vx *= -1;
         if (n.y < 0 || n.y > h) n.vy *= -1;
       }
+      const connectDist = isSmall ? 110 : 140;
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const a = nodes[i], b = nodes[j];
           const dx = a.x - b.x, dy = a.y - b.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 140) {
-            ctx.strokeStyle = `rgba(57,255,136,${0.14 * (1 - dist / 140)})`;
+          if (dist < connectDist) {
+            ctx.strokeStyle = `rgba(57,255,136,${0.14 * (1 - dist / connectDist)})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -111,9 +131,8 @@
         ctx.arc(n.x, n.y, 1.6, 0, Math.PI * 2);
         ctx.fill();
       }
-      if (!reduceMotion) requestAnimationFrame(draw);
     }
-    draw();
+    if (!reduceMotion) requestAnimationFrame(draw);
   }
 
   /* ---------------------------------------------------------------
@@ -165,10 +184,6 @@
     const toggle = $("#nav-toggle");
     const links = $("#nav-links");
 
-    window.addEventListener("scroll", () => {
-      navbar.classList.toggle("scrolled", window.scrollY > 40);
-    });
-
     toggle.addEventListener("click", () => {
       const open = links.classList.toggle("open");
       toggle.classList.toggle("open", open);
@@ -199,12 +214,27 @@
   function initScrollProgress() {
     const bar = $("#scroll-progress");
     const backTop = $("#back-to-top");
-    window.addEventListener("scroll", () => {
+    const navbar = $("#navbar");
+    let ticking = false;
+
+    function update() {
       const h = document.documentElement;
       const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
       bar.style.width = scrolled + "%";
       backTop.classList.toggle("show", h.scrollTop > 600);
-    });
+      navbar.classList.toggle("scrolled", h.scrollTop > 40);
+      ticking = false;
+    }
+
+    // Single passive, rAF-throttled scroll listener for the whole page —
+    // avoids running layout/style work synchronously on every scroll event.
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
+
     backTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
   }
 
