@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Usman | Hadi_X_Hacker — Cyber Security Portfolio</title>
+<meta name="description" content="Muhammad Usman (Hadi_X_Hacker) — BS Computer Science student in Rawalpindi, Pakistan, focused on ethical hacking, penetration testing, digital forensics and SOC analysis.">
+<meta name="keywords" content="Muhammad Usman, Hadi_X_Hacker, cyber security portfolio, ethical hacker Pakistan, bug bounty, penetration testing, digital forensics, SOC analyst, red team, blue team">
+<meta name="author" content="Muhammad Usman">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hadixhacker.vercel.app/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Muhammad Usman | Hadi_X_Hacker — Cyber Security Portfolio">
+<meta property="og:description" content="Ethical hacker and Computer Science student specializing in penetration testing, digital forensics, OSINT and SOC analysis.">
+<meta property="og:url" content="https://hadixhacker.vercel.app/">
+<meta property="og:image" content="https://hadixhacker.vercel.app/assets/images/profile.jpg">
+<meta property="og:site_name" content="Hadi_X_Hacker Portfolio">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Muhammad Usman | Hadi_X_Hacker — Cyber Security Portfolio">
+<meta name="twitter:description" content="Ethical hacker and Computer Science student specializing in penetration testing, digital forensics, OSINT and SOC analysis.">
+<meta name="twitter:image" content="https://hadixhacker.vercel.app/assets/images/profile.jpg">
+
+<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#04070a">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<!-- JSON-LD structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Muhammad Usman",
+  "alternateName": "Hadi_X_Hacker",
+  "url": "https://hadixhacker.vercel.app",
+  "image": "https://hadixhacker.vercel.app/assets/images/profile.jpg",
+  "jobTitle": "Cyber Security Student & Ethical Hacker",
+  "email": "buttsultan120@gmail.com",
+  "sameAs": [
+    "https://github.com/ButtSultan",
+    "https://pk.linkedin.com/in/muhammad-usman-8ab9a5398"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Rawalpindi",
+    "addressCountry": "Pakistan"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ============ LOADING SCREEN ============ -->
+<div id="loading-screen" aria-hidden="true">
+  <div class="loader-brand">hadi@x-hacker:~$ <span id="loader-cmd"></span></div>
+  <div class="loader-bar"><span id="loader-fill"></span></div>
+  <div class="loader-pct"><span id="loader-pct">0</span>% — initializing secure session</div>
+</div>
+
+<!-- ============ BACKGROUND LAYERS ============ -->
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<canvas id="matrix-canvas" aria-hidden="true"></canvas>
+<div class="grid-overlay" aria-hidden="true"></div>
+<div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+<!-- ============ SCROLL PROGRESS ============ -->
+<div id="scroll-progress" role="progressbar" aria-label="Scroll progress"></div>
+
+<!-- ============ NAVIGATION ============ -->
+<header id="navbar">
+  <nav class="container nav-inner">
+    <a href="#home" class="brand"><span class="dot" aria-hidden="true"></span>Hadi_X_Hacker</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home" class="active">home</a></li>
+      <li><a href="#about">about</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#certificates">certs</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#timeline">timeline</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>
+      </button>
+      <button class="icon-btn" id="music-toggle" aria-label="Toggle ambient sound" title="Toggle ambient sound">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M19 5a13 13 0 010 14M15.5 8.5a7 7 0 010 7"/></svg>
+      </button>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="home">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="hero-eyebrow"><span class="dot"></span>AVAILABLE FOR INTERNSHIPS &amp; BUG BOUNTY COLLABORATION</div>
+        <h1 class="hero-title reveal in">
+          <span class="line">Muhammad Usman —</span>
+          <span class="line accent">breaking systems to</span>
+          <span class="line">make them unbreakable.</span>
+        </h1>
+        <p class="hero-desc">
+          20-year-old Computer Science undergraduate from Rawalpindi, Pakistan, going by
+          <strong style="color:var(--text-hi)">Hadi_X_Hacker</strong>. I study how real attacks work —
+          network intrusion, web exploitation, digital forensics — so I can help defend
+          against them. Currently building toward bug bounty, red team and SOC work.
+        </p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">Get in touch</a>
+          <a href="#projects" class="btn btn-outline">View projects</a>
+          <a href="assets/resume-muhammad-usman.pdf" class="btn btn-ghost" id="resume-btn" download>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+            Resume
+          </a>
+        </div>
+
+        <div class="hero-terminal" id="hero-terminal">
+          <div class="term-bar">
+            <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+            <span class="term-title">hadi@x-hacker: ~</span>
+          </div>
+          <div class="term-body" id="hero-term-body"></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-hud hud-1"><span class="dot"></span> STATUS: ONLINE</div>
+        <div class="hero-hud hud-2"><span class="dot"></span> UPTIME: <span id="hud-uptime">00:00:00</span></div>
+        <div class="hero-hud hud-3"><span class="dot"></span> LOC: Rawalpindi, PK</div>
+        <div class="photo-frame">
+          <div class="photo-inner">
+            <img src="assets/images/profile.jpg" alt="Portrait of Muhammad Usman" width="320" height="368" loading="eager">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-cue"><span>SCROLL</span><span class="stick"></span></div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">cat about.md <span class="blink">_</span></div>
+        <h2 class="section-title">About me</h2>
+        <p class="section-sub">Where the interest in security started, and where it's headed.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm a 5th-semester <strong>BS Computer Science</strong> student at the National University
+            of Pakistan (2024–2028), based in Rawalpindi. My focus is cyber security — specifically
+            ethical hacking, network defence, and digital forensics — and I approach it the way most
+            people in this field do: slowly, through consistent practice rather than shortcuts.
+          </p>
+          <p>
+            Day to day, that means working through vulnerable labs, reading write-ups, practicing
+            reconnaissance and OSINT techniques, and getting comfortable with the Linux command line.
+            I've completed structured training in ethical hacking fundamentals and a broader cyber
+            security specialization, and I'm continuing to build toward bug bounty hunting, red team
+            exercises, and eventually SOC analysis and incident response work.
+          </p>
+          <p>
+            I'm not claiming expert-level experience — I'm early in the journey and I'm upfront about
+            that. What I can say is that I show up consistently: learning networking fundamentals,
+            practicing with tools like Burp Suite, Nmap and Wireshark, and documenting what I learn
+            along the way.
+          </p>
+
+          <div class="about-facts">
+            <div class="fact"><div class="k">Based in</div><div class="v">Rawalpindi, Pakistan</div></div>
+            <div class="fact"><div class="k">Education</div><div class="v">BS Computer Science</div></div>
+            <div class="fact"><div class="k">Institute</div><div class="v">National University of Pakistan</div></div>
+            <div class="fact"><div class="k">Semester</div><div class="v">5th Semester (2024–2028)</div></div>
+          </div>
+        </div>
+
+        <div class="focus-list reveal reveal-delay-1">
+          <div class="focus-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4z"/></svg></div>
+            <div><h4>Ethical Hacking</h4><p>Practicing authorized penetration testing methodology on labs and CTF-style environments.</p></div>
+          </div>
+          <div class="focus-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+            <div><h4>OSINT &amp; Recon</h4><p>Mapping attack surfaces using open-source intelligence before any active testing begins.</p></div>
+          </div>
+          <div class="focus-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4zM12 8v5"/></svg></div>
+            <div><h4>Digital Forensics</h4><p>Learning evidence handling, log analysis and timeline reconstruction after an incident.</p></div>
+          </div>
+          <div class="focus-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M10 8h8M6 12h.01M10 12h8M6 16h.01M10 16h4"/></svg></div>
+            <div><h4>Linux &amp; Networking</h4><p>Comfortable in Kali Linux and the CLI, with a working grasp of TCP/IP, DNS and HTTP(S).</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">ls -la ./skills <span class="blink">_</span></div>
+        <h2 class="section-title">Skills &amp; toolkit</h2>
+        <p class="section-sub">Core competencies, rated honestly against real working proficiency.</p>
+      </div>
+
+      <div class="skills-tabs" role="tablist" aria-label="Skill categories">
+        <button class="skill-tab active" data-tab="security" role="tab" aria-selected="true">Security</button>
+        <button class="skill-tab" data-tab="programming" role="tab" aria-selected="false">Programming</button>
+        <button class="skill-tab" data-tab="systems" role="tab" aria-selected="false">Systems &amp; Networking</button>
+      </div>
+
+      <div class="skills-panel" data-panel="security">
+        <div class="skills-grid">
+          <div>
+            <div class="skill-row"><span class="name">Ethical Hacking</span><span class="pct">72%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="72"></div></div>
+          </div>
+          <div>
+            <div class="skill-row"><span class="name">OSINT</span><span class="pct">75%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="75"></div></div>
+          </div>
+          <div>
+            <div class="skill-row"><span class="name">Web Security</span><span class="pct">68%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="68"></div></div>
+          </div>
+          <div>
+            <div class="skill-row"><span class="name">Network Security</span><span class="pct">65%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="65"></div></div>
+          </div>
+          <div>
+            <div class="skill-row"><span class="name">Digital Forensics</span><span class="pct">58%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="58"></div></div>
+          </div>
+          <div>
+            <div class="skill-row"><span class="name">Bug Hunting</span><span class="pct">60%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="60"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-panel" data-panel="programming" hidden>
+        <div class="skills-grid">
+          <div>
+            <div class="skill-row"><span class="name">Python</span><span class="pct">55%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="55"></div></div>
+          </div>
+          <div>
+            <div class="skill-row"><span class="name">Bash</span><span class="pct">70%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="70"></div></div>
+          </div>
+          <div>
+            <div class="skill-row"><span class="name">JavaScript</span><span class="pct">65%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="65"></div></div>
+          </div>
+          <div>
+            <div class="skill-row"><span class="name">HTML / CSS</span><span class="pct">80%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="80"></div></div>
+          </div>
+          <div>
+            <div class="skill-row"><span class="name">C++</span><span class="pct">62%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="62"></div></div>
+          </div>
+          <div>
+            <div class="skill-row"><span class="name">SQL</span><span class="pct">58%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="58"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-panel" data-panel="systems" hidden>
+        <div class="skills-grid">
+          <div>
+            <div class="skill-row"><span class="name">Linux (Kali)</span><span class="pct">75%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="75"></div></div>
+          </div>
+          <div>
+            <div class="skill-row"><span class="name">Windows</span><span class="pct">80%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="80"></div></div>
+          </div>
+          <div>
+            <div class="skill-row"><span class="name">TCP/IP &amp; DNS</span><span class="pct">68%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="68"></div></div>
+          </div>
+          <div>
+            <div class="skill-row"><span class="name">HTTP/HTTPS</span><span class="pct">70%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="70"></div></div>
+          </div>
+          <div>
+            <div class="skill-row"><span class="name">VPN &amp; Firewalls</span><span class="pct">60%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="60"></div></div>
+          </div>
+          <div>
+            <div class="skill-row"><span class="name">Git / GitHub</span><span class="pct">72%</span></div>
+            <div class="bar-track"><div class="bar-fill" data-fill="72"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-cloud reveal">
+        <span class="tool-chip"><span class="dot"></span>Burp Suite</span>
+        <span class="tool-chip"><span class="dot"></span>Wireshark</span>
+        <span class="tool-chip"><span class="dot"></span>Nmap</span>
+        <span class="tool-chip"><span class="dot"></span>Metasploit</span>
+        <span class="tool-chip"><span class="dot"></span>Gobuster</span>
+        <span class="tool-chip"><span class="dot"></span>Dirsearch</span>
+        <span class="tool-chip"><span class="dot"></span>Linux CLI</span>
+        <span class="tool-chip"><span class="dot"></span>Git &amp; GitHub</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EDUCATION ============ -->
+  <section class="section" id="education">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">cat education.log <span class="blink">_</span></div>
+        <h2 class="section-title">Education</h2>
+      </div>
+      <div class="edu-card card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg></div>
+        <div>
+          <h3>BS Computer Science</h3>
+          <div class="org">National University of Pakistan</div>
+          <p style="font-size:.9rem;color:var(--text-low);">Coursework spans core CS fundamentals alongside self-directed study in cyber security, networking and systems.</p>
+          <div class="edu-meta">
+            <span>📅 2024 — 2028</span>
+            <span>📍 Rawalpindi, Pakistan</span>
+            <span>🎓 5th Semester — In Progress</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CERTIFICATES ============ -->
+  <section class="section" id="certificates">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">ls ./certificates <span class="blink">_</span></div>
+        <h2 class="section-title">Certifications</h2>
+        <p class="section-sub">Click a certificate to view it in full resolution.</p>
+      </div>
+
+      <div class="cert-grid">
+        <div class="cert-card card reveal" data-cert-img="assets/certificates/cert-ceh.jpg" data-cert-title="Real Ethical Hacking in 46 Hours — CSEH + CEH PRO" tabindex="0" role="button" aria-label="View certificate: Real Ethical Hacking in 46 Hours">
+          <div class="cert-thumb"><img src="assets/certificates/cert-ceh.jpg" alt="Real Ethical Hacking in 46 Hours certificate, CSEH plus CEH PRO, issued by Udemy" loading="lazy"></div>
+          <div class="cert-info">
+            <h4>Real Ethical Hacking in 46 Hours</h4>
+            <div class="issuer">CSEH + CEH PRO · Udemy · Aug 2025</div>
+            <span class="tag">46 Hours</span>
+          </div>
+        </div>
+
+        <div class="cert-card card reveal reveal-delay-1" data-cert-img="assets/certificates/cert-innovista.jpg" data-cert-title="Cyber Security Specialization — Innovista Learn Easy" tabindex="0" role="button" aria-label="View certificate: Cyber Security Specialization">
+          <div class="cert-thumb"><img src="assets/certificates/cert-innovista.jpg" alt="Cyber Security Specialization certificate of achievement issued by Innovista Learn Easy" loading="lazy"></div>
+          <div class="cert-info">
+            <h4>Cyber Security Specialization</h4>
+            <div class="issuer">Innovista Learn Easy · Jul 2026</div>
+            <span class="tag">Specialization</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">ls ./projects --status <span class="blink">_</span></div>
+        <h2 class="section-title">Projects</h2>
+        <p class="section-sub">Personal builds and research tools — a mix of security tooling and applied practice.</p>
+      </div>
+
+      <div class="filter-bar" role="tablist" aria-label="Filter projects">
+        <button class="skill-tab active" data-filter="all">All</button>
+        <button class="skill-tab" data-filter="live">Live</button>
+        <button class="skill-tab" data-filter="progress">In Progress</button>
+        <button class="skill-tab" data-filter="research">Research</button>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+
+        <article class="project-card card" data-status="progress">
+          <div class="project-top">
+            <div class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+            <span class="status-pill status-progress">In Progress</span>
+          </div>
+          <h3>ThreatLens AI</h3>
+          <p>An AI-assisted threat intelligence dashboard that aggregates OSINT feeds and flags suspicious indicators for faster triage.</p>
+          <div class="project-tags"><span class="tag">Python</span><span class="tag">OSINT</span><span class="tag">Threat Intel</span></div>
+          <div class="project-actions">
+            <a href="https://github.com/ButtSultan" target="_blank" rel="noopener" class="btn btn-outline btn-sm">GitHub</a>
+            <a href="#" class="btn btn-ghost btn-sm disabled-link" data-toast="Live demo isn't published yet — check back soon.">Demo</a>
+          </div>
+        </article>
+
+        <article class="project-card card" data-status="progress">
+          <div class="project-top">
+            <div class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+            <span class="status-pill status-progress">In Progress</span>
+          </div>
+          <h3>Android Security Toolkit</h3>
+          <p>A collection of scripts for basic Android APK static analysis — permission auditing, manifest inspection and string extraction.</p>
+          <div class="project-tags"><span class="tag">Python</span><span class="tag">Android</span><span class="tag">Static Analysis</span></div>
+          <div class="project-actions">
+            <a href="https://github.com/ButtSultan" target="_blank" rel="noopener" class="btn btn-outline btn-sm">GitHub</a>
+            <a href="#" class="btn btn-ghost btn-sm disabled-link" data-toast="Live demo isn't published yet — check back soon.">Demo</a>
+          </div>
+        </article>
+
+        <article class="project-card card" data-status="live">
+          <div class="project-top">
+            <div class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+            <span class="status-pill status-live">Live</span>
+          </div>
+          <h3>Password Generator</h3>
+          <p>A configurable, client-side strong password generator with entropy scoring and zero server-side storage of generated values.</p>
+          <div class="project-tags"><span class="tag">JavaScript</span><span class="tag">Security</span><span class="tag">Web</span></div>
+          <div class="project-actions">
+            <a href="https://github.com/ButtSultan" target="_blank" rel="noopener" class="btn btn-outline btn-sm">GitHub</a>
+            <a href="https://github.com/ButtSultan" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Demo</a>
+          </div>
+        </article>
+
+        <article class="project-card card" data-status="live">
+          <div class="project-top">
+            <div class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18z"/></svg></div>
+            <span class="status-pill status-live">Live</span>
+          </div>
+          <h3>Port Scanner</h3>
+          <p>A CLI-based TCP port scanner built in Python for authorized reconnaissance on lab environments, with banner grabbing support.</p>
+          <div class="project-tags"><span class="tag">Python</span><span class="tag">Networking</span><span class="tag">CLI</span></div>
+          <div class="project-actions">
+            <a href="https://github.com/ButtSultan" target="_blank" rel="noopener" class="btn btn-outline btn-sm">GitHub</a>
+            <a href="https://github.com/ButtSultan" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Demo</a>
+          </div>
+        </article>
+
+        <article class="project-card card" data-status="research">
+          <div class="project-top">
+            <div class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 6h8M6 8v8M18 8v8M8 18h8"/></svg></div>
+            <span class="status-pill status-research">Research</span>
+          </div>
+          <h3>Network Scanner</h3>
+          <p>A host discovery and service enumeration tool for local subnets, built to practice reconnaissance methodology on isolated lab networks.</p>
+          <div class="project-tags"><span class="tag">Python</span><span class="tag">Nmap</span><span class="tag">Recon</span></div>
+          <div class="project-actions">
+            <a href="https://github.com/ButtSultan" target="_blank" rel="noopener" class="btn btn-outline btn-sm">GitHub</a>
+            <a href="#" class="btn btn-ghost btn-sm disabled-link" data-toast="Still in research phase — no public demo yet.">Demo</a>
+          </div>
+        </article>
+
+        <article class="project-card card" data-status="research">
+          <div class="project-top">
+            <div class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+            <span class="status-pill status-research">Research</span>
+          </div>
+          <h3>Bug Hunting Notes</h3>
+          <p>A structured, public knowledge base documenting vulnerability classes, testing methodology and lessons from lab-based bug hunting.</p>
+          <div class="project-tags"><span class="tag">Markdown</span><span class="tag">Web Security</span><span class="tag">Docs</span></div>
+          <div class="project-actions">
+            <a href="https://github.com/ButtSultan" target="_blank" rel="noopener" class="btn btn-outline btn-sm">GitHub</a>
+            <a href="#" class="btn btn-ghost btn-sm disabled-link" data-toast="Notes are being organized before publishing a demo.">Demo</a>
+          </div>
+        </article>
+
+        <article class="project-card card" data-status="progress">
+          <div class="project-top">
+            <div class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-6 3 4 5-8"/></svg></div>
+            <span class="status-pill status-progress">In Progress</span>
+          </div>
+          <h3>Cyber Dashboard</h3>
+          <p>A self-hosted monitoring dashboard for tracking learning progress, lab completions and personal CTF statistics in one place.</p>
+          <div class="project-tags"><span class="tag">JavaScript</span><span class="tag">Chart.js</span><span class="tag">Dashboard</span></div>
+          <div class="project-actions">
+            <a href="https://github.com/ButtSultan" target="_blank" rel="noopener" class="btn btn-outline btn-sm">GitHub</a>
+            <a href="#" class="btn btn-ghost btn-sm disabled-link" data-toast="Live demo isn't published yet — check back soon.">Demo</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GITHUB ============ -->
+  <section class="section" id="github">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">curl api.github.com/users/ButtSultan <span class="blink">_</span></div>
+        <h2 class="section-title">GitHub activity</h2>
+        <p class="section-sub">Live data pulled directly from the GitHub API.</p>
+      </div>
+
+      <div class="gh-panel">
+        <div class="gh-profile card reveal">
+          <div class="gh-avatar"><img id="gh-avatar-img" src="assets/images/profile.jpg" alt="GitHub avatar"></div>
+          <h3 id="gh-name">Muhammad Usman</h3>
+          <div class="handle" id="gh-handle">@ButtSultan</div>
+          <a href="https://github.com/ButtSultan" target="_blank" rel="noopener" class="btn btn-outline btn-sm">View Profile</a>
+          <div class="gh-stats-mini">
+            <div><div class="num" id="gh-repos-count">—</div><div class="lbl">Repos</div></div>
+            <div><div class="num" id="gh-followers">—</div><div class="lbl">Followers</div></div>
+            <div><div class="num" id="gh-following">—</div><div class="lbl">Following</div></div>
+          </div>
+        </div>
+
+        <div class="gh-repos" id="gh-repos-list">
+          <div class="gh-loading mono">Fetching latest repositories…</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TIMELINE ============ -->
+  <section class="section" id="timeline">
+    <div class="container">
+      <div class="section-head reveal" style="margin-inline:auto;text-align:center;">
+        <div class="eyebrow" style="justify-content:center;">tail -f journey.log <span class="blink">_</span></div>
+        <h2 class="section-title">Timeline</h2>
+        <p class="section-sub" style="margin-inline:auto;">The path so far, and what's next.</p>
+      </div>
+
+      <div class="timeline reveal">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2024</div>
+          <h4>Started BS Computer Science</h4>
+          <p>Enrolled at the National University of Pakistan, beginning formal CS education alongside self-taught security fundamentals.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2025</div>
+          <h4>Completed Ethical Hacking Certification</h4>
+          <p>Finished "Real Ethical Hacking in 46 Hours: CSEH + CEH PRO" on Udemy, covering practical offensive security fundamentals.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2026</div>
+          <h4>Cyber Security Specialization</h4>
+          <p>Completed the InnoQuest Cyber Security Specialization course through Innovista Learn Easy.</p>
+        </div>
+        <div class="tl-item future">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Future</div>
+          <h4>Bug Bounty · Red Team · SOC Analyst</h4>
+          <p>Working toward first bug bounty submissions, red team exercises, and a role in SOC analysis or incident response.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATISTICS ============ -->
+  <section class="section" id="statistics">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card card reveal">
+          <div class="stat-num" data-count="2">0</div>
+          <div class="stat-lbl">Certificates</div>
+        </div>
+        <div class="stat-card card reveal reveal-delay-1">
+          <div class="stat-num" data-count="7">0</div>
+          <div class="stat-lbl">Projects</div>
+        </div>
+        <div class="stat-card card reveal reveal-delay-2">
+          <div class="stat-num" data-count="24">0</div>
+          <div class="stat-lbl">Skills Practiced</div>
+        </div>
+        <div class="stat-card card reveal reveal-delay-3">
+          <div class="stat-num" data-count="400">0</div>
+          <div class="stat-lbl">Learning Hours</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">cat services.yaml <span class="blink">_</span></div>
+        <h2 class="section-title">What I can help with</h2>
+        <p class="section-sub">Areas I'm actively building toward professional-level capability in.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4z"/></svg></div>
+          <h3>Vulnerability Assessment</h3>
+          <p>Structured, lab-based testing to identify and document common web and network vulnerabilities.</p>
+        </div>
+        <div class="service-card card reveal reveal-delay-1">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+          <h3>OSINT Investigations</h3>
+          <p>Open-source reconnaissance to map digital footprints and exposed information.</p>
+        </div>
+        <div class="service-card card reveal reveal-delay-2">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20"/></svg></div>
+          <h3>Network Security Review</h3>
+          <p>Reviewing network configurations, firewall rules and exposed services against best practice.</p>
+        </div>
+        <div class="service-card card reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4zM12 8v5"/></svg></div>
+          <h3>Digital Forensics Support</h3>
+          <p>Log analysis, artifact review and timeline reconstruction for post-incident investigation practice.</p>
+        </div>
+        <div class="service-card card reveal reveal-delay-1">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-6 3 4 5-8"/></svg></div>
+          <h3>Security Awareness</h3>
+          <p>Clear, practical guidance on personal and small-team digital hygiene and phishing awareness.</p>
+        </div>
+        <div class="service-card card reveal reveal-delay-2">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/></svg></div>
+          <h3>Security Scripting</h3>
+          <p>Small Python and Bash tools for recon, scanning and reporting automation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">./connect --secure <span class="blink">_</span></div>
+        <h2 class="section-title">Let's talk</h2>
+        <p class="section-sub">Open to internships, freelance security tasks, and bug bounty collaboration.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="contact-row card">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></div>
+            <div><div class="lbl">Email</div><div class="val">buttsultan120@gmail.com</div></div>
+            <button class="btn icon-btn copy-btn" id="copy-email" aria-label="Copy email address" title="Copy email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+          <a href="https://github.com/ButtSultan" target="_blank" rel="noopener" class="contact-row card">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.8 5.4.8 11.7c0 5 3.2 9.2 7.7 10.7.6.1.8-.3.8-.6v-2.1c-3.1.7-3.8-1.5-3.8-1.5-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3.1 0 0 .9-.3 3 1.1a10 10 0 015.4 0c2.1-1.4 3-1.1 3-1.1.6 1.6.2 2.8.1 3.1.7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.5-1.5 7.7-5.7 7.7-10.7C23.2 5.4 18.3.5 12 .5z"/></svg></div>
+            <div><div class="lbl">GitHub</div><div class="val">github.com/ButtSultan</div></div>
+          </a>
+          <a href="https://pk.linkedin.com/in/muhammad-usman-8ab9a5398" target="_blank" rel="noopener" class="contact-row card">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.7A1.7 1.7 0 118.2 7a1.7 1.7 0 01-1.7 1.7zM19 19h-3v-4.6c0-1.1 0-2.5-1.5-2.5s-1.8 1.2-1.8 2.4V19h-3v-9h2.9v1.3a3.1 3.1 0 012.8-1.5c3 0 3.6 2 3.6 4.5z"/></svg></div>
+            <div><div class="lbl">LinkedIn</div><div class="val">Muhammad Usman</div></div>
+          </a>
+          <div class="contact-row card">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="lbl">Location</div><div class="val">Rawalpindi, Pakistan</div></div>
+          </div>
+        </div>
+
+        <form class="form-card card reveal reveal-delay-1" id="contact-form" novalidate>
+          <div class="form-group" id="fg-name">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" placeholder="Your full name" required>
+            <div class="form-error">Please enter your name.</div>
+          </div>
+          <div class="form-group" id="fg-email">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" placeholder="you@example.com" required>
+            <div class="form-error">Please enter a valid email address.</div>
+          </div>
+          <div class="form-group" id="fg-subject">
+            <label for="cf-subject">Subject</label>
+            <input type="text" id="cf-subject" name="subject" placeholder="What's this about?" required>
+            <div class="form-error">Please add a subject.</div>
+          </div>
+          <div class="form-group" id="fg-message">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" placeholder="Tell me a bit about it…" required></textarea>
+            <div class="form-error">Please write a short message.</div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">
+            Send message
+          </button>
+          <p style="font-size:.72rem;color:var(--text-low);margin-top:.8rem;font-family:var(--f-mono);">
+            Opens your email client with this message pre-filled — sent directly to buttsultan120@gmail.com.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="brand"><span class="dot"></span>Hadi_X_Hacker</a>
+        <p>Cyber security student building toward ethical hacking, digital forensics and SOC analysis, one lab at a time.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#certificates">Certificates</a>
+        </div>
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <a href="https://github.com/ButtSultan" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://pk.linkedin.com/in/muhammad-usman-8ab9a5398" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:buttsultan120@gmail.com">Email</a>
+        </div>
+        <div class="footer-col">
+          <h5>More</h5>
+          <a href="assets/resume-muhammad-usman.pdf" download>Resume</a>
+          <a href="#" id="print-resume-link">Print page</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Muhammad Usman — Hadi_X_Hacker. All rights reserved.</span>
+      <span>Built with HTML · CSS · JavaScript</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ HUD DOCK (signature element) ============ -->
+<div id="hud-dock">
+  <span class="status-dot" aria-hidden="true"></span>
+  <span id="hud-clock">00:00:00</span>
+  <span class="divider"></span>
+  <button id="matrix-toggle" title="Toggle matrix rain">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 7v10M12 7v10M16 7v10"/></svg>
+    matrix
+  </button>
+  <span class="divider"></span>
+  <button id="terminal-open" title="Open terminal">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+    terminal
+  </button>
+  <span class="divider"></span>
+  <span id="visitor-count" title="Local visit count">views: —</span>
+</div>
+
+<button id="back-to-top" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<!-- ============ TERMINAL MODAL ============ -->
+<div class="term-modal" id="term-modal" role="dialog" aria-modal="true" aria-label="Interactive terminal">
+  <div class="term-window">
+    <div class="term-bar">
+      <span class="term-dot r" id="term-close" style="cursor:pointer;"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+      <span class="term-title">hadi@x-hacker: ~ — type "help"</span>
+    </div>
+    <div class="term-output" id="term-output"></div>
+    <div class="term-input-row">
+      <span class="prompt">hadi@x-hacker:~$</span>
+      <input type="text" id="term-input" autocomplete="off" spellcheck="false" aria-label="Terminal command input">
+    </div>
+  </div>
+</div>
+
+<!-- ============ CERTIFICATE LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close certificate viewer">&times;</button>
+  <div class="lightbox-inner">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+</div>
+
+<!-- ============ TOASTS ============ -->
+<div id="toast-container" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

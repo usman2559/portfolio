@@ -1,0 +1,12 @@
+{
+  "name": "Muhammad Usman | Hadi_X_Hacker — Cyber Security Portfolio",
+  "short_name": "Hadi_X_Hacker",
+  "description": "Cyber security portfolio of Muhammad Usman (Hadi_X_Hacker) — ethical hacking, digital forensics, and network security.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#04070a",
+  "theme_color": "#04070a",
+  "icons": [
+    { "src": "assets/icons/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
