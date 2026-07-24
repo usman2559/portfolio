@@ -7,7 +7,7 @@
 
   const $  = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
-  const GITHUB_USER = "ButtSultan";
+  const GITHUB_USER = "usman2559";
 
   /* ---------------------------------------------------------------
      LOADING SCREEN

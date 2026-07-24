@@ -16,5 +16,5 @@ Personal cyber security portfolio for Muhammad Usman, built with plain HTML, CSS
 
 ## Notes
 - Contact form opens the visitor's email client with a pre-filled message (no backend required).
-- GitHub section pulls live data from the public GitHub API for `ButtSultan`.
+- GitHub section pulls live data from the public GitHub API for `usman2559`.
 - Visitor counter is stored in `localStorage` (per-browser, not a global count).
